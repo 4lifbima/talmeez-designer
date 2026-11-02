@@ -43,13 +43,13 @@ export interface StatItem {
 
 export const PORTFOLIO_DATA = {
   designer: {
-    name: "talmeez",
+    name: "alifbima",
     badge: "OPEN FOR SELECTED PROJECTS",
     heroTitle: "Design That Builds Brands.",
     heroHighlight: "Builds",
     heroDescription: "I help ambitious brands stand out with bold, strategic and unforgettable design.",
     experienceBadge: "5+ Years Experience",
-    avatar: "/assets/extracted/hero-designer.png",
+    avatar: "/assets/extracted/alifbims.png",
   },
   services: [
     {

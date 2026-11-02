@@ -38,7 +38,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
           className="bg-[#121316] text-white px-5 py-2 rounded-full font-bold text-xl tracking-tight flex items-center hover:bg-black transition-colors shadow-sm"
           aria-label="Talmeez Home"
         >
-          talmeez<span className="text-[#ff5520] ml-0.5">.</span>
+          alifbima<span className="text-[#ff5520] ml-0.5">.</span>
         </Link>
 
         {/* Center Navigation Pill (Desktop) */}

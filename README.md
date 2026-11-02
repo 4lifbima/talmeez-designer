@@ -2,7 +2,7 @@
 
 <div align="center">
 
-![Talmeez Portfolio Banner](./public/assets/aistudio/porto_4e3fa266.jpg)
+![Talmeez Portfolio Banner](./public/assets/aistudio/thumbnail.png)
 
 **Design That Builds Brands.**  
 *Membantu brand ambisius tampil menonjol dengan desain yang berani, strategis, dan tak terlupakan.*
