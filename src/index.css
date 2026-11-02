@@ -1,0 +1,29 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --primary-orange: #ff5520;
+    --primary-orange-hover: #e04414;
+    --dark-bg: #121316;
+    --dark-card: #1b1d22;
+    --dark-card-hover: #22252c;
+    --cream-bg: #faf8f5;
+  }
+
+  body {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    background-color: var(--cream-bg);
+    color: #1a1a1a;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background-color: #ff5520;
+    color: #ffffff;
+  }
+}
+
+/* Custom smooth transitions & animations */
+html {
+  scroll-behavior: smooth;
+}
