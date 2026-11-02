@@ -11,17 +11,17 @@ export const Footer: React.FC<FooterProps> = ({ onOpenContact }) => {
   return (
     <footer id="contact" className="bg-[#121316] text-gray-400 pt-16 pb-12 border-t border-white/5">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-8">
-        
+
         {/* Main Grid */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 lg:gap-12 pb-12 border-b border-white/10">
-          
+
           {/* Brand Info (Col 1-5) */}
           <div className="md:col-span-5 flex flex-col items-start">
             <Link
               to="/"
               className="text-white font-extrabold text-2xl tracking-tight flex items-center mb-4"
             >
-              talmeez<span className="text-[#ff5520]">.</span>
+              alifbima<span className="text-[#ff5520]">.</span>
             </Link>
             <p className="text-gray-400 text-sm max-w-sm leading-relaxed mb-6">
               Designing bold brands that make impact.
@@ -149,14 +149,14 @@ export const Footer: React.FC<FooterProps> = ({ onOpenContact }) => {
                 <Phone className="w-4 h-4" />
               </a>
             </div>
-            <p className="text-xs text-gray-500 mt-3">hello@talmeez.design</p>
+            <p className="text-xs text-gray-500 mt-3">hello@alifbima.design</p>
           </div>
 
         </div>
 
         {/* Bottom Copyright & Legal Links */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-500">
-          <p>© 2026 talmeez. All rights reserved.</p>
+          <p>© 2026 alifbima. All rights reserved.</p>
           <div className="flex items-center gap-6">
             <a href="#privacy" className="hover:text-gray-300 transition-colors">Privacy Policy</a>
             <a href="#terms" className="hover:text-gray-300 transition-colors">Terms & Conditions</a>

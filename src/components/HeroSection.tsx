@@ -14,7 +14,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenContact, onScrol
     <section id="home" className="pt-8 pb-16 md:pt-14 md:pb-24 overflow-hidden">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
-          
+
           {/* Left Content Column */}
           <div className="lg:col-span-7 flex flex-col items-start z-10">
             {/* Status Pill Badge */}
@@ -74,7 +74,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenContact, onScrol
               {/* Designer Photo */}
               <img
                 src={avatar}
-                alt="Talmeez - Brand and UI/UX Designer"
+                alt="alifbima - Brand and UI/UX Designer"
                 className="w-full h-auto object-contain filter drop-shadow-xl"
                 loading="eager"
               />

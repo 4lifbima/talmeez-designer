@@ -36,7 +36,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
         <Link
           to="/"
           className="bg-[#121316] text-white px-5 py-2 rounded-full font-bold text-xl tracking-tight flex items-center hover:bg-black transition-colors shadow-sm"
-          aria-label="Talmeez Home"
+          aria-label="alifbima Home"
         >
           alifbima<span className="text-[#ff5520] ml-0.5">.</span>
         </Link>
@@ -58,11 +58,10 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
                     handleNavClick(item.href);
                   }
                 }}
-                className={`text-sm px-4 py-1.5 rounded-full transition-all duration-200 ${
-                  isActive
+                className={`text-sm px-4 py-1.5 rounded-full transition-all duration-200 ${isActive
                     ? 'bg-[#ff5520] text-white font-semibold shadow-xs'
                     : 'text-gray-300 hover:text-white hover:bg-white/10'
-                }`}
+                  }`}
               >
                 {item.label}
               </a>

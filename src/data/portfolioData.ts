@@ -147,7 +147,7 @@ export const PORTFOLIO_DATA = {
   testimonials: [
     {
       id: "t1",
-      quote: "Talmeez has a unique ability to understand the brand and translate it into visuals that truly connect.",
+      quote: "alifbima has a unique ability to understand the brand and translate it into visuals that truly connect.",
       author: "John Snow",
       role: "Founder",
       company: "Orin",
@@ -156,7 +156,7 @@ export const PORTFOLIO_DATA = {
     },
     {
       id: "t2",
-      quote: "Talmeez has a unique ability to understand the brand and translate it into visuals that truly connect.",
+      quote: "alifbima has a unique ability to understand the brand and translate it into visuals that truly connect.",
       author: "John Snow",
       role: "Founder",
       company: "Orin",
@@ -165,7 +165,7 @@ export const PORTFOLIO_DATA = {
     },
     {
       id: "t3",
-      quote: "Talmeez has a unique ability to understand the brand and translate it into visuals that truly connect.",
+      quote: "alifbima has a unique ability to understand the brand and translate it into visuals that truly connect.",
       author: "John Snow",
       role: "Founder",
       company: "Orin",

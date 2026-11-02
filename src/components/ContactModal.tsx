@@ -69,7 +69,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({
       className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs animate-in fade-in duration-200"
     >
       <div className="bg-white rounded-3xl max-w-xl w-full p-6 sm:p-8 shadow-2xl relative border border-gray-100 max-h-[92vh] overflow-y-auto">
-        
+
         {/* Close Button */}
         <button
           onClick={onClose}
@@ -86,7 +86,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({
             </div>
             <h3 className="text-2xl font-bold text-gray-900 mb-2">Message Sent!</h3>
             <p className="text-gray-600 text-sm max-w-sm mx-auto mb-6">
-              Thank you for reaching out! Talmeez will review your project requirements and reply within 24 hours.
+              Thank you for reaching out! alifbima will review your project requirements and reply within 24 hours.
             </p>
             <button
               onClick={handleReset}
@@ -121,11 +121,10 @@ export const ContactModal: React.FC<ContactModalProps> = ({
                       type="button"
                       key={s}
                       onClick={() => setFormData({ ...formData, serviceType: s })}
-                      className={`text-xs font-semibold py-2 px-3 rounded-xl border text-center transition-all ${
-                        formData.serviceType === s
+                      className={`text-xs font-semibold py-2 px-3 rounded-xl border text-center transition-all ${formData.serviceType === s
                           ? 'bg-[#121316] text-white border-[#121316]'
                           : 'bg-gray-50 hover:bg-gray-100 text-gray-700 border-gray-200'
-                      }`}
+                        }`}
                     >
                       {s}
                     </button>
@@ -179,11 +178,10 @@ export const ContactModal: React.FC<ContactModalProps> = ({
                       type="button"
                       key={b}
                       onClick={() => setFormData({ ...formData, budget: b })}
-                      className={`text-xs font-semibold py-1.5 px-2 rounded-lg border text-center transition-all ${
-                        formData.budget === b
+                      className={`text-xs font-semibold py-1.5 px-2 rounded-lg border text-center transition-all ${formData.budget === b
                           ? 'bg-[#ff5520] text-white border-[#ff5520]'
                           : 'bg-gray-50 hover:bg-gray-100 text-gray-700 border-gray-200'
-                      }`}
+                        }`}
                     >
                       {b}
                     </button>

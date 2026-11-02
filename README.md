@@ -1,8 +1,8 @@
-# 🎨 Talmeez — Designer & Brand Strategist Portfolio
+# 🎨 alifbima - Designer & Brand Strategist Portfolio
 
 <div align="center">
 
-![Talmeez Portfolio Banner](./public/assets/aistudio/thumbnail.png)
+![alifbima Portfolio Banner](./public/assets/aistudio/thumbnail.png)
 
 **Design That Builds Brands.**  
 *Membantu brand ambisius tampil menonjol dengan desain yang berani, strategis, dan tak terlupakan.*
@@ -22,7 +22,7 @@
 
 ## 📖 Tentang Proyek
 
-**Talmeez Designer Portfolio** adalah website portofolio modern, responsif, dan berperforma tinggi yang dirancang khusus untuk Brand Designer, UI/UX Designer, dan Creative Director. Dibangun dengan kombinasi teknologi mutakhir (**React 19**, **Vite**, **Tailwind CSS v4**, dan **Motion**), portofolio ini menampilkan perpaduan palet warna dark & orange yang berani, tipografi modern, serta mikro-interaksi yang memikat.
+**alifbima Designer Portfolio** adalah website portofolio modern, responsif, dan berperforma tinggi yang dirancang khusus untuk Brand Designer, UI/UX Designer, dan Creative Director. Dibangun dengan kombinasi teknologi mutakhir (**React 19**, **Vite**, **Tailwind CSS v4**, dan **Motion**), portofolio ini menampilkan perpaduan palet warna dark & orange yang berani, tipografi modern, serta mikro-interaksi yang memikat.
 
 Website ini tidak hanya menampilkan galeri visual, tetapi juga dilengkapi dengan halaman studi kasus mendalam (*case study detail page*), pembuktian sosial (*metrics & testimonials*), serta formulir interaktif untuk konsultasi proyek.
 
@@ -64,8 +64,8 @@ Pastikan Anda telah menginstal **Node.js** (versi 18 ke atas disarankan) dan **n
 ### 1. Clone Repositori
 
 ```bash
-git clone https://github.com/username/talmeez-designer-portfolio.git
-cd talmeez-designer-portfolio
+git clone https://github.com/username/alifbima-designer-portfolio.git
+cd alifbima-designer-portfolio
 ```
 
 ### 2. Pasang Dependensi
@@ -111,7 +111,7 @@ Buka browser dan akses [http://localhost:3000](http://localhost:3000) untuk meli
 ## 📁 Struktur Direktori
 
 ```text
-talmeez-designer-portfolio/
+alifbima-designer-portfolio/
 ├── public/
 │   └── assets/
 │       ├── aistudio/       # Asset mockup & referensi visual
