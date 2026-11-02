@@ -8,7 +8,7 @@ interface HeroSectionProps {
 }
 
 export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenContact, onScrollToWork }) => {
-  const { badge, heroTitle, heroHighlight, heroDescription, avatar } = PORTFOLIO_DATA.designer;
+  const { heroTitle, heroHighlight, heroDescription, avatar } = PORTFOLIO_DATA.designer;
 
   return (
     <section id="home" className="pt-8 pb-16 md:pt-14 md:pb-24 overflow-hidden">
@@ -17,23 +17,12 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenContact, onScrol
 
           {/* Left Content Column */}
           <div className="lg:col-span-7 flex flex-col items-start z-10">
-            {/* Status Pill Badge */}
-            <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white border border-gray-200/90 shadow-xs mb-6 sm:mb-8">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#ff5520] opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-[#ff5520]"></span>
-              </span>
-              <span className="text-[11px] sm:text-xs font-bold tracking-wider text-gray-800 uppercase">
-                {badge}
-              </span>
-              <Send className="w-3.5 h-3.5 text-[#ff5520] transform rotate-45 ml-0.5" />
-            </div>
 
             {/* Main Headline */}
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[68px] font-extrabold text-gray-950 tracking-tight leading-[1.08] max-w-xl">
-              Design That{' '}
+            <h1 className="text-[45px] sm:text-5xl md:text-6xl lg:text-[60px] font-extrabold text-gray-950 tracking-tight leading-[1.08] max-w-xl">
+              Software{' '}
               <span className="text-[#ff5520]">{heroHighlight}</span>{' '}
-              Brands.
+              At Jtif ung.
             </h1>
 
             {/* Subheading */}

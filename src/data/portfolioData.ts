@@ -46,7 +46,7 @@ export const PORTFOLIO_DATA = {
     name: "alifbima",
     badge: "OPEN FOR SELECTED PROJECTS",
     heroTitle: "Design That Builds Brands.",
-    heroHighlight: "Builds",
+    heroHighlight: "Enginner",
     heroDescription: "I help ambitious brands stand out with bold, strategic and unforgettable design.",
     experienceBadge: "5+ Years Experience",
     avatar: "/assets/extracted/alifbims.png",
