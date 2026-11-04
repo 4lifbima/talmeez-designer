@@ -31,24 +31,6 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onSelectServic
           {/* Subtle Ambient Glow */}
           <div className="absolute top-0 right-0 w-96 h-96 bg-[#ff5520]/10 rounded-full blur-3xl pointer-events-none" />
 
-          {/* Section Header */}
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-white/10 pb-8">
-            <div>
-              <span className="text-[#ff5520] font-bold text-xs uppercase tracking-widest block mb-2">
-                SERVICES
-              </span>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white">
-                What I Do<span className="text-[#ff5520]">.</span>
-              </h2>
-            </div>
-            <div className="max-w-md">
-              <p className="text-gray-400 text-xs sm:text-sm leading-relaxed flex items-center gap-2">
-                <span>Design solutions that are user-focused, strategy-driven and visually powerful.</span>
-                <span className="text-white text-base">→</span>
-              </p>
-            </div>
-          </div>
-
           {/* 4 Service Cards Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 mt-8">
             {PORTFOLIO_DATA.services.map((service) => (

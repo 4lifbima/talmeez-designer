@@ -4,8 +4,6 @@ import { Navbar } from '../components/Navbar';
 import { HeroSection } from '../components/HeroSection';
 import { ServicesSection } from '../components/ServicesSection';
 import { ProjectsSection } from '../components/ProjectsSection';
-import { StatsBar } from '../components/StatsBar';
-import { TestimonialsSection } from '../components/TestimonialsSection';
 import { CtaBanner } from '../components/CtaBanner';
 import { Footer } from '../components/Footer';
 import { ContactModal } from '../components/ContactModal';
@@ -54,12 +52,6 @@ export const HomePage: React.FC = () => {
         <ProjectsSection
           onViewAllClick={handleScrollToWork}
         />
-
-        {/* 4. Stats Counter Bar */}
-        <StatsBar />
-
-        {/* 5. Testimonials: Trusted by Great Clients. */}
-        <TestimonialsSection />
 
         {/* 6. Call To Action Banner */}
         <CtaBanner

@@ -15,7 +15,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onViewAllClick
         {/* Section Header */}
         <div className="mb-10 sm:mb-12">
           <span className="text-[#ff5520] font-bold text-xs uppercase tracking-widest block mb-2">
-            FEATURED WORK
+            Projects I have created
           </span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-gray-950">
             Selected Projects<span className="text-[#ff5520]">.</span>
@@ -52,8 +52,8 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onViewAllClick
                   </span>
 
                   {/* Project Title: Demo Project */}
-                  <h3 className="text-xl sm:text-2xl font-extrabold text-gray-950 tracking-tight leading-tight">
-                    Demo<br />Project
+                  <h3 className="text-xl sm:text-xl font-extrabold text-gray-950 tracking-tight leading-tight">
+                    {project.displayTitle}
                   </h3>
                 </div>
 
