@@ -91,7 +91,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenContact }) => {
             <h4 className="text-white font-bold text-sm tracking-tight mb-4">Quick Links</h4>
             <ul className="space-y-2.5 text-xs sm:text-sm">
               <li>
-                <a href="#about" className="hover:text-white transition-colors">About</a>
+                <Link to="/about" className="hover:text-white transition-colors">About</Link>
               </li>
               <li>
                 <a href="#services" className="hover:text-white transition-colors">Services</a>
