@@ -1,92 +1,60 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
-
-declare global {
-  interface Window {
-    gtranslateSettings?: {
-      default_language: string;
-      native_language_names?: boolean;
-      languages: string[];
-      wrapper_selector: string;
-      flag_size?: number;
-      flag_style?: string;
-    };
-    doGTranslate?: (langPair: string) => void;
-  }
-}
+import { useLanguage, type Language } from '../context/LanguageContext';
 
 interface NavbarProps {
   onOpenContact?: () => void;
 }
 
-function getInitialLanguage(): 'id' | 'en' {
-  if (typeof document === 'undefined') return 'en';
-  const match = document.cookie.match(/(?:^|;\s*)googtrans=([^;]*)/);
-  if (match && decodeURIComponent(match[1]).endsWith('/id')) {
-    return 'id';
-  }
-  return 'en';
-}
+const NAV_LABELS: Record<Language, Record<'home' | 'about' | 'services' | 'work' | 'contact', string>> = {
+  en: {
+    home: 'Home',
+    about: 'About',
+    services: 'Services',
+    work: 'Work',
+    contact: 'Contact',
+  },
+  id: {
+    home: 'Beranda',
+    about: 'Tentang',
+    services: 'Layanan',
+    work: 'Karya',
+    contact: 'Kontak',
+  },
+};
+
+const LANGUAGE_OPTIONS: Array<{ code: Language; label: string; flag: string }> = [
+  {
+    code: 'id',
+    label: 'Bahasa Indonesia',
+    flag: 'https://flagcdn.com/w40/id.png',
+  },
+  {
+    code: 'en',
+    label: 'English',
+    flag: 'https://flagcdn.com/w40/gb.png',
+  },
+];
 
 export const Navbar: React.FC<NavbarProps> = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [activeLang, setActiveLang] = useState<'id' | 'en'>(getInitialLanguage);
+  const { language, setLanguage } = useLanguage();
   const location = useLocation();
   const isHome = location.pathname === '/';
   const isAbout = location.pathname === '/about';
-
-  useEffect(() => {
-    window.gtranslateSettings = {
-      default_language: 'en',
-      native_language_names: true,
-      languages: ['id', 'en'],
-      wrapper_selector: '.gtranslate_wrapper',
-      flag_size: 24,
-    };
-
-    const libSrc = 'https://cdn.gtranslate.net/widgets/latest/lib.min.js';
-    if (!document.querySelector(`script[src="${libSrc}"]`)) {
-      const libScript = document.createElement('script');
-      libScript.src = libSrc;
-      libScript.defer = true;
-      document.body.appendChild(libScript);
-    }
-
-    const flagsSrc = 'https://cdn.gtranslate.net/widgets/latest/flags.js';
-    const existingFlags = document.querySelectorAll(`script[src="${flagsSrc}"]`);
-    existingFlags.forEach((s) => s.remove());
-
-    const flagsScript = document.createElement('script');
-    flagsScript.src = flagsSrc;
-    flagsScript.defer = true;
-    document.body.appendChild(flagsScript);
-  }, [location.pathname]);
-
-  const handleWrapperClick = (e: React.MouseEvent<HTMLDivElement>) => {
-    const target = (e.target as HTMLElement).closest('a[data-gt-lang]') as HTMLAnchorElement | null;
-    if (!target) return;
-
-    const lang = target.getAttribute('data-gt-lang');
-    if (lang === 'id' || lang === 'en') {
-      e.preventDefault();
-      setActiveLang(lang);
-      if (typeof window.doGTranslate === 'function') {
-        window.doGTranslate(`en|${lang}`);
-      }
-    }
-  };
+  const labels = NAV_LABELS[language];
 
   const navItems = [
-    { label: 'Home', href: isHome ? '#home' : '/' },
-    { label: 'About', href: '/about' },
-    { label: 'Services', href: isHome ? '#services' : '/#services' },
-    { label: 'Work', href: isHome ? '#work' : '/#work' },
-    { label: 'Contact', href: isHome ? '#contact' : '/#contact' },
-  ];
+    { key: 'home', label: labels.home, href: isHome ? '#home' : '/' },
+    { key: 'about', label: labels.about, href: '/about' },
+    { key: 'services', label: labels.services, href: isHome ? '#services' : '/#services' },
+    { key: 'work', label: labels.work, href: isHome ? '#work' : '/#work' },
+    { key: 'contact', label: labels.contact, href: isHome ? '#contact' : '/#contact' },
+  ] as const;
 
-  const isNavItemActive = (label: string) =>
-    (label === 'Home' && isHome) || (label === 'About' && isAbout);
+  const isNavItemActive = (key: string) =>
+    (key === 'home' && isHome) || (key === 'about' && isAbout);
 
   const handleNavClick = (href: string) => {
     setMobileMenuOpen(false);
@@ -112,14 +80,14 @@ export const Navbar: React.FC<NavbarProps> = () => {
 
         {/* Center Navigation Pill (Desktop) */}
         <nav
-          aria-label="Main Navigation"
+          aria-label={language === 'id' ? 'Navigasi Utama' : 'Main Navigation'}
           className="hidden md:flex items-center bg-[#121316] rounded-full p-1.5 shadow-sm space-x-1"
         >
           {navItems.map((item) => {
-            const isActive = isNavItemActive(item.label);
+            const isActive = isNavItemActive(item.key);
             return (
               <a
-                key={item.label}
+                key={item.key}
                 href={item.href}
                 onClick={(e) => {
                   if (item.href.startsWith('#')) {
@@ -127,10 +95,11 @@ export const Navbar: React.FC<NavbarProps> = () => {
                     handleNavClick(item.href);
                   }
                 }}
-                className={`text-sm px-4 py-1.5 rounded-full transition-all duration-200 ${isActive
+                className={`text-sm px-4 py-1.5 rounded-full transition-all duration-200 ${
+                  isActive
                     ? 'bg-[#ff5520] text-white font-semibold shadow-xs'
                     : 'text-gray-300 hover:text-white hover:bg-white/10'
-                  }`}
+                }`}
               >
                 {item.label}
               </a>
@@ -141,47 +110,51 @@ export const Navbar: React.FC<NavbarProps> = () => {
         {/* Right Language Flags Switcher & Mobile Menu Button */}
         <div className="flex items-center gap-2">
           <div
-            onClick={handleWrapperClick}
-            className="bg-[#121316] px-2.5 py-1.5 rounded-full flex items-center shadow-sm border border-white/10"
-            aria-label="Language Switcher"
+            role="group"
+            aria-label={language === 'id' ? 'Pilih bahasa' : 'Select language'}
+            className="bg-[#121316] px-2 py-1.5 rounded-full flex items-center gap-1 shadow-sm border border-white/10"
           >
-            <div
-              className="gtranslate_wrapper notranslate"
-              data-active-lang={activeLang}
-            >
-              <a
-                href="#"
-                title="Bahasa Indonesia"
-                data-gt-lang="id"
-                className="glink nturl notranslate"
-              >
-                <img
-                  src="https://cdn.gtranslate.net/flags/svg/id.svg"
-                  width={24}
-                  height={24}
-                  alt="id"
-                />
-              </a>
-              <a
-                href="#"
-                title="English"
-                data-gt-lang="en"
-                className="glink nturl notranslate"
-              >
-                <img
-                  src="https://cdn.gtranslate.net/flags/svg/en.svg"
-                  width={24}
-                  height={24}
-                  alt="en"
-                />
-              </a>
-            </div>
+            {LANGUAGE_OPTIONS.map((option) => {
+              const isActive = language === option.code;
+
+              return (
+                <button
+                  key={option.code}
+                  type="button"
+                  onClick={() => setLanguage(option.code)}
+                  title={option.label}
+                  aria-label={option.label}
+                  aria-pressed={isActive}
+                  className={`w-7 h-7 rounded-full flex items-center justify-center transition-all duration-200 ${
+                    isActive
+                      ? 'bg-[#ff5520]/25 ring-2 ring-[#ff5520] opacity-100'
+                      : 'opacity-60 hover:opacity-100 hover:bg-white/10'
+                  }`}
+                >
+                  <img
+                    src={option.flag}
+                    alt=""
+                    width={22}
+                    height={22}
+                    className="w-[22px] h-[22px] rounded-full object-cover"
+                  />
+                </button>
+              );
+            })}
           </div>
 
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="md:hidden p-2 rounded-full bg-[#121316] text-white hover:bg-black transition-colors"
-            aria-label={mobileMenuOpen ? 'Close Menu' : 'Open Menu'}
+            aria-label={
+              mobileMenuOpen
+                ? language === 'id'
+                  ? 'Tutup menu'
+                  : 'Close menu'
+                : language === 'id'
+                  ? 'Buka menu'
+                  : 'Open menu'
+            }
           >
             {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
@@ -194,7 +167,7 @@ export const Navbar: React.FC<NavbarProps> = () => {
           <nav className="flex flex-col space-y-2">
             {navItems.map((item) => (
               <a
-                key={item.label}
+                key={item.key}
                 href={item.href}
                 onClick={(e) => {
                   if (item.href.startsWith('#')) {
@@ -205,7 +178,7 @@ export const Navbar: React.FC<NavbarProps> = () => {
                 className="px-4 py-2.5 rounded-xl text-sm font-medium hover:bg-white/10 transition-colors flex items-center justify-between"
               >
                 <span>{item.label}</span>
-                {isNavItemActive(item.label) && (
+                {isNavItemActive(item.key) && (
                   <span className="w-2 h-2 rounded-full bg-[#ff5520]" />
                 )}
               </a>

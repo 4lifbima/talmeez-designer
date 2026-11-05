@@ -2,12 +2,66 @@ import React from 'react';
 import { Mail, MapPin, Phone } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { PORTFOLIO_DATA } from '../data/portfolioData';
+import { useLanguage, type Language } from '../context/LanguageContext';
 
 interface FooterProps {
   onOpenContact: () => void;
 }
 
+const FOOTER_LABELS: Record<
+  Language,
+  {
+    tagline: string;
+    quickLinks: string;
+    about: string;
+    services: string;
+    work: string;
+    contact: string;
+    sendEmail: string;
+    location: string;
+    call: string;
+    copyright: string;
+    privacy: string;
+    terms: string;
+    refund: string;
+  }
+> = {
+  en: {
+    tagline: 'Designing bold brands that make impact.',
+    quickLinks: 'Quick Links',
+    about: 'About',
+    services: 'Services',
+    work: 'Work',
+    contact: 'Contact',
+    sendEmail: 'Send Email',
+    location: 'Location',
+    call: 'Call',
+    copyright: '© 2026 alifbima. All rights reserved.',
+    privacy: 'Privacy Policy',
+    terms: 'Terms & Conditions',
+    refund: 'Refund Policy',
+  },
+  id: {
+    tagline: 'Merancang brand berani yang memberi dampak.',
+    quickLinks: 'Tautan Cepat',
+    about: 'Tentang',
+    services: 'Layanan',
+    work: 'Karya',
+    contact: 'Kontak',
+    sendEmail: 'Kirim Email',
+    location: 'Lokasi',
+    call: 'Telepon',
+    copyright: '© 2026 alifbima. Hak cipta dilindungi.',
+    privacy: 'Kebijakan Privasi',
+    terms: 'Syarat & Ketentuan',
+    refund: 'Kebijakan Pengembalian',
+  },
+};
+
 export const Footer: React.FC<FooterProps> = ({ onOpenContact }) => {
+  const { language } = useLanguage();
+  const text = FOOTER_LABELS[language];
+
   return (
     <footer id="contact" className="bg-[#121316] text-gray-400 pt-16 pb-12 border-t border-white/5">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-8">
@@ -24,7 +78,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenContact }) => {
               alifbima<span className="text-[#ff5520]">.</span>
             </Link>
             <p className="text-gray-400 text-sm max-w-sm leading-relaxed mb-6">
-              Designing bold brands that make impact.
+              {text.tagline}
             </p>
 
             {/* Social Icons Row */}
@@ -88,23 +142,23 @@ export const Footer: React.FC<FooterProps> = ({ onOpenContact }) => {
 
           {/* Quick Links (Col 6-7) */}
           <div className="md:col-span-2">
-            <h4 className="text-white font-bold text-sm tracking-tight mb-4">Quick Links</h4>
+            <h4 className="text-white font-bold text-sm tracking-tight mb-4">{text.quickLinks}</h4>
             <ul className="space-y-2.5 text-xs sm:text-sm">
               <li>
-                <Link to="/about" className="hover:text-white transition-colors">About</Link>
+                <Link to="/about" className="hover:text-white transition-colors">{text.about}</Link>
               </li>
               <li>
-                <a href="#services" className="hover:text-white transition-colors">Services</a>
+                <a href="/#services" className="hover:text-white transition-colors">{text.services}</a>
               </li>
               <li>
-                <a href="#work" className="hover:text-white transition-colors">Work</a>
+                <a href="/#work" className="hover:text-white transition-colors">{text.work}</a>
               </li>
               <li>
                 <button
                   onClick={onOpenContact}
                   className="hover:text-white transition-colors text-left"
                 >
-                  Contact
+                  {text.contact}
                 </button>
               </li>
             </ul>
@@ -112,7 +166,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenContact }) => {
 
           {/* Services (Col 8-10) */}
           <div className="md:col-span-3">
-            <h4 className="text-white font-bold text-sm tracking-tight mb-4">Services</h4>
+            <h4 className="text-white font-bold text-sm tracking-tight mb-4">{text.services}</h4>
             <ul className="space-y-2.5 text-xs sm:text-sm">
               {PORTFOLIO_DATA.services.map((s) => (
                 <li key={s.id}>
@@ -126,24 +180,24 @@ export const Footer: React.FC<FooterProps> = ({ onOpenContact }) => {
 
           {/* Contact Icons (Col 11-12) */}
           <div className="md:col-span-2">
-            <h4 className="text-white font-bold text-sm tracking-tight mb-4">Contact</h4>
+            <h4 className="text-white font-bold text-sm tracking-tight mb-4">{text.contact}</h4>
             <div className="flex items-center gap-3 text-gray-300">
               <button
                 onClick={onOpenContact}
-                aria-label="Send Email"
+                aria-label={text.sendEmail}
                 className="w-8 h-8 rounded-full bg-white/5 hover:bg-[#ff5520] hover:text-white flex items-center justify-center transition-colors"
               >
                 <Mail className="w-4 h-4" />
               </button>
               <span
-                aria-label="Location"
+                aria-label={text.location}
                 className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-gray-400"
               >
                 <MapPin className="w-4 h-4" />
               </span>
               <a
                 href="tel:+15550192834"
-                aria-label="Call"
+                aria-label={text.call}
                 className="w-8 h-8 rounded-full bg-white/5 hover:bg-[#ff5520] hover:text-white flex items-center justify-center transition-colors"
               >
                 <Phone className="w-4 h-4" />
@@ -156,11 +210,11 @@ export const Footer: React.FC<FooterProps> = ({ onOpenContact }) => {
 
         {/* Bottom Copyright & Legal Links */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-500">
-          <p>© 2026 alifbima. All rights reserved.</p>
+          <p>{text.copyright}</p>
           <div className="flex items-center gap-6">
-            <a href="#privacy" className="hover:text-gray-300 transition-colors">Privacy Policy</a>
-            <a href="#terms" className="hover:text-gray-300 transition-colors">Terms & Conditions</a>
-            <a href="#refund" className="hover:text-gray-300 transition-colors">Refund Policy</a>
+            <a href="#privacy" className="hover:text-gray-300 transition-colors">{text.privacy}</a>
+            <a href="#terms" className="hover:text-gray-300 transition-colors">{text.terms}</a>
+            <a href="#refund" className="hover:text-gray-300 transition-colors">{text.refund}</a>
           </div>
         </div>
 

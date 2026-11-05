@@ -10,6 +10,7 @@ import { HomePage } from './pages/HomePage';
 import { AboutPage } from './pages/AboutPage';
 import { ProjectDetailPage } from './pages/ProjectDetailPage';
 import { ContactModal } from './components/ContactModal';
+import { LanguageProvider } from './context/LanguageContext';
 
 function AnimatedRoutes() {
   const location = useLocation();
@@ -40,8 +41,10 @@ function AnimatedRoutes() {
 
 export default function App() {
   return (
-    <BrowserRouter>
-      <AnimatedRoutes />
-    </BrowserRouter>
+    <LanguageProvider>
+      <BrowserRouter>
+        <AnimatedRoutes />
+      </BrowserRouter>
+    </LanguageProvider>
   );
 }
